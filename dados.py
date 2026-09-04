@@ -7,9 +7,9 @@ indice_minuto = 3
 col_dia = tabela.iloc[:, 1]
 
 criterio_horario = (
-    ((tabela.iloc[:, indice_hora] == 14) & (tabela.iloc[:, indice_minuto] >= 16)) |
-    ((tabela.iloc[:, indice_hora] > 14) & (tabela.iloc[:, indice_hora] < 18)) |
-    ((tabela.iloc[:, indice_hora] == 18) & (tabela.iloc[:, indice_minuto] == 0))
+    ((tabela.iloc[:, indice_hora] == 2) & (tabela.iloc[:, indice_minuto] >= 16)) |
+    ((tabela.iloc[:, indice_hora] > 2) & (tabela.iloc[:, indice_hora] < 6)) |
+    ((tabela.iloc[:, indice_hora] == 6) & (tabela.iloc[:, indice_minuto] <= 15))
 )
 dados_filtrados = tabela[criterio_horario]
 
