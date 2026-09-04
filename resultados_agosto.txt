@@ -1,0 +1,11 @@
+RESULTADOS DA ANÁLISE: 
+
+COLUNA 5: 
+Media: 210.71        Media parcial: 225.07
+Maximo: 1679            Maximo parcial: 1152
+Minimo: 13            Minimo parcial: 26
+
+COLUNA 6:
+Media: -10.37        Media parcial: -11.03
+Maximo: 23            Maximo parcial: 16
+Minimo: -88            Minimo parcial: -78
