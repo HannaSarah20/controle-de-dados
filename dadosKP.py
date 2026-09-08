@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
 
 tabela = pd.read_csv('valorKp.txt', sep=r'\s+', header=None)
 
@@ -21,6 +23,12 @@ tabela_diaria = pd.DataFrame({
     'KP_Maximo_Diario': dias_agrupamento.max().values
 })
 
+kp_madrugada = kp_ajustado[criterio_hora]
+dias_madrugada = col_dia[criterio_hora]
+
+agrupamento = kp_madrugada.groupby(dias_madrugada)
+tabela_diaria['Kp parcial (02h até 05h)'] = agrupamento.max().values
+
 def classificar_kp(valor_kp):
     if valor_kp < 4:
         return "Calmo"
@@ -30,6 +38,38 @@ def classificar_kp(valor_kp):
         return "Tempestade"
 
 tabela_diaria['Classificacao'] = tabela_diaria['KP_Maximo_Diario'].apply(classificar_kp)
+
+dias_calmos = tabela_diaria[tabela_diaria['Classificacao'] == 'Calmo']
+dias_ativos = tabela_diaria[tabela_diaria['Classificacao'] == 'Ativo']
+dias_tempestades = tabela_diaria[tabela_diaria['Classificacao'] == 'Tempestade']
+
+#histograma calmo
+plt.figure(figsize=(8, 5))
+plt.hist(dias_calmos['KP_Maximo_Diario'], bins=4, range=(0, 4), color='lightblue', edgecolor='black')
+plt.title('Histograma 1: Dias Calmos', fontsize=14)
+plt.xlabel('Valores do KP', fontsize=12)
+plt.ylabel('Quantidade de Dias', fontsize=12)
+plt.savefig('hist_categoria_calmo.png', dpi=300, bbox_inches='tight')
+plt.show
+
+#histograma dias ativos
+plt.figure(figsize=(8, 5))
+plt.hist(dias_ativos['KP_Maximo_Diario'], bins=4, range=(0, 4), color='lightblue', edgecolor='black')
+plt.title('Histograma 2: Dias ativos', fontsize=14)
+plt.xlabel('Valores do KP', fontsize=12)
+plt.ylabel('Quantidade de Dias', fontsize=12)
+plt.savefig('hist_categoria_ativo.png', dpi=300, bbox_inches='tight')
+plt.show
+
+#histograma tempestade
+plt.figure(figsize=(8, 5))
+plt.hist(dias_tempestades['KP_Maximo_Diario'], bins=4, range=(0, 4), color='lightblue', edgecolor='black')
+plt.title('Histograma 3: Dias de tempestade', fontsize=14)
+plt.xlabel('Valores do KP', fontsize=12)
+plt.ylabel('Quantidade de Dias', fontsize=12)
+plt.savefig('hist_categoria_tempestade.png', dpi=300, bbox_inches='tight')
+plt.show
+
 
 with pd.ExcelWriter('resultados_kp.xlsx', engine='openpyxl') as writer:
     resumo.to_excel(writer, sheet_name='Media_Parcial', index=False)
