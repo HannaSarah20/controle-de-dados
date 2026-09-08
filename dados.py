@@ -68,7 +68,9 @@ Minimo: {min_6}            Minimo parcial: {min_parcial6}
 
 #grafico parcial de SYM/H
 plt.figure(figsize=(8, 5))
-plt.hist(parcial6, bins=15, color='lightcoral', edgecolor='black')
+plt.hist(parcial6, bins=15,range=(-90, 20), color='lightcoral', edgecolor='black')
+plt.xlim(-90, 40) 
+plt.ylim(0, 2000)
 plt.title('Histograma SYM/H Parcial das 02h16 às 06h15', fontsize=14)
 plt.xlabel('Valores de SYM/H', fontsize=12)
 plt.ylabel('Frequência de Quantidade de Medições', fontsize=12)
@@ -86,7 +88,9 @@ plt.show()
 
 #grafico SYM/H medio
 plt.figure(figsize=(8, 5))
-plt.hist(tabela_diaria['Media_Col6'], bins=10, color='lightblue', edgecolor='black')
+plt.hist(tabela_diaria['Media_Col6'], bins=10, range=(-90, 20), color='lightblue', edgecolor='black')
+plt.xlim(-90, 40) 
+plt.ylim(0, 20)
 plt.title('Histograma SYM/H Médio Diário', fontsize=14)
 plt.xlabel('Valores de SYM/H', fontsize=12)
 plt.ylabel('Frequência em dias', fontsize=12)
@@ -95,7 +99,9 @@ plt.show()
 
 #grafico SYM/H Maximo
 plt.figure(figsize=(8, 5))
-plt.hist(tabela_diaria['Max_Col6'], bins=10, color='lightblue', edgecolor='black')
+plt.hist(tabela_diaria['Max_Col6'], bins=10, range=(-90, 20), color='lightblue', edgecolor='black')
+plt.xlim(-90, 40) 
+plt.ylim(0, 20)
 plt.title('Histograma SYM/H maximo Diário', fontsize=14)
 plt.xlabel('Valores de SYM/H', fontsize=12)
 plt.ylabel('Frequência em dias', fontsize=12)
@@ -104,7 +110,9 @@ plt.show()
 
 #grafico SYM/H minimo
 plt.figure(figsize=(8, 5))
-plt.hist(tabela_diaria['Min_Col6'], bins=10, color='lightblue', edgecolor='black')
+plt.hist(tabela_diaria['Min_Col6'], bins=10, range=(-90, 20), color='lightblue', edgecolor='black')
+plt.xlim(-90, 40) 
+plt.ylim(0, 20)
 plt.title('Histograma SYM/H minimo Diário', fontsize=14)
 plt.xlabel('Valores de SYM/H', fontsize=12)
 plt.ylabel('Frequência em dias', fontsize=12)
@@ -113,7 +121,9 @@ plt.show()
 
 #grafico AE medio
 plt.figure(figsize=(8, 5))
-plt.hist(tabela_diaria['Media_Col5'], bins=10, color='lightblue', edgecolor='black')
+plt.hist(tabela_diaria['Media_Col5'], bins=10, range=(0, 1600), color='lightblue', edgecolor='black')
+plt.xlim(-20, 1600) 
+plt.ylim(0, 20)
 plt.title('Histograma AE medio Diário', fontsize=14)
 plt.xlabel('Valores de AE', fontsize=12)
 plt.ylabel('Frequência em dias', fontsize=12)
