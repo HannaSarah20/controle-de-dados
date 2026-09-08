@@ -66,6 +66,24 @@ Maximo: {max_6}            Maximo parcial: {max_parcial6}
 Minimo: {min_6}            Minimo parcial: {min_parcial6}
 """
 
+#grafico parcial de SYM/H
+plt.figure(figsize=(8, 5))
+plt.hist(parcial6, bins=15, color='lightcoral', edgecolor='black')
+plt.title('Histograma SYM/H Parcial das 02h16 às 06h15', fontsize=14)
+plt.xlabel('Valores de SYM/H', fontsize=12)
+plt.ylabel('Frequência de Quantidade de Medições', fontsize=12)
+plt.savefig('hist_SYMH_parcial.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#grafico parcial de AE
+plt.figure(figsize=(8, 5))
+plt.hist(parcial5, bins=15, color='lightcoral', edgecolor='black')
+plt.title('Histograma AE Parcial das 02h16 às 06h15', fontsize=14)
+plt.xlabel('Valores de AE', fontsize=12)
+plt.ylabel('Frequência de Quantidade de Medições', fontsize=12)
+plt.savefig('hist_AE_parcial.png', dpi=300, bbox_inches='tight')
+plt.show()
+
 #grafico SYM/H medio
 plt.figure(figsize=(8, 5))
 plt.hist(tabela_diaria['Media_Col6'], bins=10, color='lightblue', edgecolor='black')
