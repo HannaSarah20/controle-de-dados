@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 tabela = pd.read_csv('dados_agosto.txt', sep=r'\s+', header=None)
 
@@ -64,6 +65,60 @@ Media: {media6:.2f}        Media parcial: {media_parcial6:.2f}
 Maximo: {max_6}            Maximo parcial: {max_parcial6}
 Minimo: {min_6}            Minimo parcial: {min_parcial6}
 """
+
+#grafico SYM/H medio
+plt.figure(figsize=(8, 5))
+plt.hist(tabela_diaria['Media_Col6'], bins=10, color='lightblue', edgecolor='black')
+plt.title('Histograma SYM/H Médio Diário', fontsize=14)
+plt.xlabel('Valores de SYM/H', fontsize=12)
+plt.ylabel('Frequência em dias', fontsize=12)
+plt.savefig('hist_SYMH_medio.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#grafico SYM/H Maximo
+plt.figure(figsize=(8, 5))
+plt.hist(tabela_diaria['Max_Col6'], bins=10, color='lightblue', edgecolor='black')
+plt.title('Histograma SYM/H maximo Diário', fontsize=14)
+plt.xlabel('Valores de SYM/H', fontsize=12)
+plt.ylabel('Frequência em dias', fontsize=12)
+plt.savefig('hist_SYMH_maximo.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#grafico SYM/H minimo
+plt.figure(figsize=(8, 5))
+plt.hist(tabela_diaria['Min_Col6'], bins=10, color='lightblue', edgecolor='black')
+plt.title('Histograma SYM/H minimo Diário', fontsize=14)
+plt.xlabel('Valores de SYM/H', fontsize=12)
+plt.ylabel('Frequência em dias', fontsize=12)
+plt.savefig('hist_SYMH_minimo.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#grafico AE medio
+plt.figure(figsize=(8, 5))
+plt.hist(tabela_diaria['Media_Col5'], bins=10, color='lightblue', edgecolor='black')
+plt.title('Histograma AE medio Diário', fontsize=14)
+plt.xlabel('Valores de AE', fontsize=12)
+plt.ylabel('Frequência em dias', fontsize=12)
+plt.savefig('hist_AE_medio.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#grafico AE maximo
+plt.figure(figsize=(8, 5))
+plt.hist(tabela_diaria['Max_Col5'], bins=10, color='lightblue', edgecolor='black')
+plt.title('Histograma AE medio Diário', fontsize=14)
+plt.xlabel('Valores de AE', fontsize=12)
+plt.ylabel('Frequência em dias', fontsize=12)
+plt.savefig('hist_AE_maximo.png', dpi=300, bbox_inches='tight')
+plt.show()
+
+#grafico AE minimo
+plt.figure(figsize=(8, 5))
+plt.hist(tabela_diaria['Min_Col5'], bins=10, color='lightblue', edgecolor='black')
+plt.title('Histograma AE minimo Diário', fontsize=14)
+plt.xlabel('Valores de AE', fontsize=12)
+plt.ylabel('Frequência em dias', fontsize=12)
+plt.savefig('hist_AE_minimo.png', dpi=300, bbox_inches='tight')
+plt.show()
 
 with pd.ExcelWriter('relatorio_final_agosto.xlsx', engine='openpyxl') as writer:
     resumo_geral.to_excel(writer, sheet_name='Resumo_Geral_e_Parcial', index=False)
