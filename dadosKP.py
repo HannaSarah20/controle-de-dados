@@ -1,6 +1,5 @@
 import pandas as pd
 import matplotlib.pyplot as plt
-import numpy as np
 
 tabela = pd.read_csv('valorKp.txt', sep=r'\s+', header=None)
 
@@ -63,7 +62,7 @@ plt.show
 
 #histograma tempestade
 plt.figure(figsize=(8, 5))
-plt.hist(dias_tempestades['KP_Maximo_Diario'], bins=4, range=(0, 4), color='lightblue', edgecolor='black')
+plt.bar(dias_tempestades['Dia do ano'], dias_tempestades['KP_Maximo_Diario'], color='salmon', edgecolor='black')
 plt.title('Histograma 3: Dias de tempestade', fontsize=14)
 plt.xlabel('Valores do KP', fontsize=12)
 plt.ylabel('Quantidade de Dias', fontsize=12)
